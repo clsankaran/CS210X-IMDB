@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class IMDBActorsGraph implements Graph {
-    IMDBActorsGraph(String actorFile, String actressFile) throws FileNotFoundException {
+    IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
         File fileActor = new File(actorFile);
         File fileActress = new File(actressFile);
         Scanner scanner = new Scanner(fileActor);
