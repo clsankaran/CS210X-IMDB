@@ -1,11 +1,12 @@
 import java.util.*;
 public class MovieNode implements Node {
 
-    private String _name;
-    final private ArrayList<Node> _listOfActors = new ArrayList<ActorNode>();
+    final private String _name;
+    final private ArrayList<ActorNode> _actorsInMovie;
 
     public MovieNode (String name) {
         _name = name;
+        _actorsInMovie = new ArrayList<ActorNode>();
     }
 
     public String getName () {
@@ -13,11 +14,11 @@ public class MovieNode implements Node {
     }
 
     public Collection<? extends Node> getNeighbors () {
-        return _listOfActors;
+        return _actorsInMovie;
     }
 
     public void addToNeighnors (ActorNode actor) {
-        _listOfActors.add(actor);
+        _actorsInMovie.add(actor);
     }
 
 }
