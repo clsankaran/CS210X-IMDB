@@ -6,7 +6,6 @@ public class IMDBActorsGraph implements Graph {
     IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
         File fileActor = new File(actorFile);
         File fileActress = new File(actressFile);
-        System.out.println(fileActor.canRead());
         Scanner scanner = new Scanner(fileActor);
     }
     /**
