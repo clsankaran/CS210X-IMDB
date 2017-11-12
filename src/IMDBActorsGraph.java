@@ -1,12 +1,15 @@
 import java.util.Collection;
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 
 public class IMDBActorsGraph implements Graph {
-    IMDBActorsGraph(String actorFile, String actressFile){
+    IMDBActorsGraph(String actorFile, String actressFile) throws FileNotFoundException {
         File fileActor = new File(actorFile);
         File fileActress = new File(actressFile);
         Scanner scanner = new Scanner(fileActor);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+        }
     }
     /**
      * Gets all the nodes in the graph.
