@@ -10,6 +10,11 @@ public class IMDBActorsGraph implements Graph {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
         }
+        scanner = new Scanner(fileActress);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+        }
+        scanner.close();
     }
     /**
      * Gets all the nodes in the graph.
