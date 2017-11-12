@@ -16,7 +16,7 @@ public class IMDBActorsGraph implements Graph {
                 String line = scanner.nextLine();
             }
             scanner.close();
-        } else{
+        } else {
             throw new FileNotFoundException("File could not be found.");
         }
     }
