@@ -20,4 +20,8 @@ public class ActorNode implements Node {
 		return _moviesActedIn;
 	}
 	
+	public void addToNeighbors(MovieNode movie) {
+		_moviesActedIn.add(movie);
+	}
+	
 }
