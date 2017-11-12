@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class IMDBActorsGraph implements Graph {
     IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
-        /*File fileActor = new File(actorFile);
+        File fileActor = new File(actorFile);
         File fileActress = new File(actressFile);
         if(fileActor.exists() && fileActress.exists()) {
             Scanner scanner = new Scanner(fileActor);
@@ -18,7 +18,7 @@ public class IMDBActorsGraph implements Graph {
             scanner.close();
         } else{
             throw new FileNotFoundException("File could not be found.");
-        }*/
+        }
     }
     /**
      * Gets all the nodes in the graph.
