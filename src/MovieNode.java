@@ -9,10 +9,12 @@ public class MovieNode implements Node {
         _actorsInMovie = new ArrayList<ActorNode>();
     }
 
+    @Override
     public String getName () {
         return _name;
     }
 
+    @Override
     public Collection<? extends Node> getNeighbors () {
         return _actorsInMovie;
     }
