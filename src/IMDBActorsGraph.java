@@ -7,7 +7,9 @@ public class IMDBActorsGraph implements Graph {
 		File fileActor = new File(actorFile);
 		File fileActress = new File(actressFile);
 		Scanner scanner = new Scanner(fileActor);
-
+		while(scanner.hasNextLine()){
+			String line = scanner.nextLine();
+		}
 	}
 
 	/**
