@@ -1,6 +1,9 @@
 import java.util.Collection;
 
 public class IMDBMoviesGraph implements Graph {
+    IMDBMoviesGraph(String actorFile, String actressFile){
+
+    }
     /**
      * Gets all the nodes in the graph.
      * @return a collection of all the nodes in the graph.
