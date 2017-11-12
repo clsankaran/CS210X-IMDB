@@ -6,20 +6,7 @@ public class IMDBActorsGraph implements Graph {
     IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
         File fileActor = new File(actorFile);
         File fileActress = new File(actressFile);
-        if(fileActor.exists() && fileActress.exists()) {
-            Scanner scanner = new Scanner(fileActor);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-            }
-            scanner = new Scanner(fileActress);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-            }
-            scanner.close();
-        } 
-        else{
-            throw new FileNotFoundException("File could not be found.");
-        }
+        Scanner scanner = new Scanner(fileActor);
     }
     /**
      * Gets all the nodes in the graph.
