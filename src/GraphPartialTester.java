@@ -58,6 +58,10 @@ public class GraphPartialTester {
 		testFindNode(actorsGraph, "Tom Brady");
 	}
 
+	@Test
+	/**
+	 * Verifies that a specific actress has been parsed.
+	 */
 	public void testSpecificActress() {
 		testFindNode(actorsGraph, "Angela Aames");
 	}
