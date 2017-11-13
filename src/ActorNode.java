@@ -25,7 +25,7 @@ public class ActorNode implements Node {
 	}
 	
 	public boolean equals(Object o) {
-		return (((ActorNode) o).getName().equals(_name));
+		return (((Node) o).getName().equals(_name));
 	}
 
 	
