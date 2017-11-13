@@ -95,6 +95,17 @@ public class IMDBActorsGraph implements Graph {
 	 *         exists.
 	 */
 	public Node getNodeByName(String name) {
+		for (Node n : _actors) {
+			if (n.equals(new ActorNode(name))) {
+				return n;
+			}
+		}
+		for (Node n : _movies) {
+			if (n.equals(new MovieNode(name))) {
+				return n;
+			}
+		}
+		
 		return null;
 	}
 }
