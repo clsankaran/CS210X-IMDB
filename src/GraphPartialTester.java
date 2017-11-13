@@ -11,22 +11,23 @@ public class GraphPartialTester {
 	Graph actorsGraph, moviesGraph;
 	GraphSearchEngine searchEngine;
 
-	@Test(timeout=5000)
+	@Test(timeout = 5000)
 	/**
-	 * Verifies that there is no shortest path between a specific and actor and actress.
+	 * Verifies that there is no shortest path between a specific and actor and
+	 * actress.
 	 */
-	public void findShortestPath () {
+	public void findShortestPath() {
 		final Node actor1 = actorsGraph.getNodeByName("Tom Brady");
 		final Node actor2 = actorsGraph.getNodeByName("Peyton Manning");
 		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
-		assertNull(shortestPath);  // there is no path between these people
+		assertNull(shortestPath); // there is no path between these people
 	}
 
 	@Before
 	/**
 	 * Instantiates the actors and movies graphs
 	 */
-	public void setUp () throws IOException {
+	public void setUp() throws IOException {
 		actorsGraph = new IMDBActorsGraph("actors_test", "actresses_test");
 		moviesGraph = new IMDBMoviesGraph("actors_test", "actresses_test");
 		searchEngine = new GraphSearchEngineImpl();
@@ -36,7 +37,7 @@ public class GraphPartialTester {
 	/**
 	 * Just verifies that the graphs could be instantiated without crashing.
 	 */
-	public void finishedLoading () {
+	public void finishedLoading() {
 		assertTrue(true);
 		// Yay! We didn't crash
 	}
@@ -45,24 +46,31 @@ public class GraphPartialTester {
 	/**
 	 * Verifies that a specific movie has been parsed.
 	 */
-	public void testSpecificMovie () {
+	public void testSpecificMovie() {
 		testFindNode(moviesGraph, "Movie1 (2001)");
 	}
 
 	@Test
 	/**
-	 * Verifies that a specific actress has been parsed.
+	 * Verifies that a specific actor has been parsed.
 	 */
-	public void testSpecificActress () {
+	public void testSpecificActor() {
 		testFindNode(actorsGraph, "Tom Brady");
+	}
+
+	public void testSpecificActress() {
+		testFindNode(actorsGraph, "Angela Aames");
 	}
 
 	/**
 	 * Verifies that the specific graph contains a node with the specified name
-	 * @param graph the Graph to search for the node
-	 * @param name the name of the Node
+	 * 
+	 * @param graph
+	 *            the Graph to search for the node
+	 * @param name
+	 *            the name of the Node
 	 */
-	private static void testFindNode (Graph graph, String name) {
+	private static void testFindNode(Graph graph, String name) {
 		final Collection<? extends Node> nodes = graph.getNodes();
 		boolean found = false;
 		for (Node node : nodes) {
