@@ -76,7 +76,8 @@ return visitedNodes;}
                 }
             }
         }
-        if(u != t){
+
+        if(!visited.contains(t)){
             return null;
         }
 
