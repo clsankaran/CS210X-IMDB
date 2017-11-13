@@ -20,6 +20,7 @@ public class GraphPartialTester {
 		final Node actor1 = actorsGraph.getNodeByName("Tom Brady");
 		final Node actor2 = actorsGraph.getNodeByName("Irv Pratt");
 		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		
 		assertNull(shortestPath); // there is no path between these people
 	}
 
