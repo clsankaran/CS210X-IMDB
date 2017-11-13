@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.io.*;
 import java.util.Scanner;
 
 public class IMDBActorsGraph implements Graph {
 	
-	final ArrayList<ActorNode> actors;
-	final ArrayList<MovieNode> movies;
+	final List<ActorNode> actors;
+	final List<MovieNode> movies;
 	
 	IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
 		final File fileActor = new File(actorFile);
