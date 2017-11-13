@@ -58,6 +58,7 @@ public class GraphPartialTester {
 		testFindNode(actorsGraph, "Tom Brady");
 	}
 
+	@Test
 	public void testSpecificActress() {
 		testFindNode(actorsGraph, "Angela Aames");
 	}
