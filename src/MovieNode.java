@@ -24,7 +24,7 @@ public class MovieNode implements Node {
     }
     
     public boolean equals(Object o) {
-		return (((MovieNode) o).getName().equals(_name));
+		return (((Node) o).getName().equals(_name));
 	}
 
 }
