@@ -77,10 +77,6 @@ return visitedNodes;}
             }
         }
 
-        if(!visited.contains(t)){
-            return null;
-        }
-
         //To find the path
         Node node = null;
         Node currentSrc = t;
