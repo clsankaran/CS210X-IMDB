@@ -75,7 +75,7 @@ return visitedNodes;}
         }
 
         //To find the path
-        Node node;
+        Node node = null;
         Node currentSrc = t;
         shortestPathList.add(t);
         while(!pathStack.isEmpty())
@@ -89,8 +89,11 @@ return visitedNodes;}
                     break;
             }
         }
-
-        return shortestPathList;
+        if(node != s){
+            return null;
+        } else {
+            return shortestPathList;
+        }
      }
 
 }

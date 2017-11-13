@@ -16,9 +16,9 @@ public class GraphPartialTester {
 	 * Verifies that there is no shortest path between a specific and actor and actress.
 	 */
 	public void findShortestPath () {
-		final Node actor1 = actorsGraph.getNodeByName("Actor1");
-		final Node actress2 = actorsGraph.getNodeByName("Actress2");
-		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actress2);
+		final Node actor1 = actorsGraph.getNodeByName("Tom Brady");
+		final Node actor2 = actorsGraph.getNodeByName("Peyton Manning");
+		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
 		assertNull(shortestPath);  // there is no path between these people
 	}
 
