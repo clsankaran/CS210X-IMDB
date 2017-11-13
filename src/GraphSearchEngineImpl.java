@@ -5,6 +5,8 @@ import java.util.Stack;
 import java.util.ArrayList;
 
 public class GraphSearchEngineImpl implements GraphSearchEngine{
+
+
 /*
 
 List bfs (Node s) {
@@ -57,9 +59,10 @@ return visitedNodes;}
         pathStack.add(s);
         visited.add(s);
 
+        Node u = null;
         while(!toVisit.isEmpty())
         {
-            Node u = toVisit.poll();
+            u = toVisit.poll();
 
             for(Node neighbor : u.getNeighbors())
             {
@@ -72,6 +75,9 @@ return visitedNodes;}
                         break;
                 }
             }
+        }
+        if(u != t){
+            return null;
         }
 
         //To find the path
@@ -89,11 +95,8 @@ return visitedNodes;}
                     break;
             }
         }
-        if(node != s){
-            return null;
-        } else {
-            return shortestPathList;
-        }
+
+        return shortestPathList;
      }
 
 }
