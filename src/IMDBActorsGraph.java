@@ -6,11 +6,13 @@ import java.util.Scanner;
 public class IMDBActorsGraph implements Graph {
 	
 	final ArrayList<ActorNode> actors;
+	final ArrayList<MovieNode> movies;
 	
 	IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
 		final File fileActor = new File(actorFile);
 		final File fileActress = new File(actressFile);
 		actors = new ArrayList<ActorNode>();
+		movies = new ArrayList<MovieNode>();
 		Scanner scanner = new Scanner(fileActor, "ISO-8859-1");
 
 		String line;
@@ -24,15 +26,18 @@ public class IMDBActorsGraph implements Graph {
 		//line is currently the first actor
 		
 		if (!(line.startsWith("            "))) {
+			final String name;
 			if (line.contains(",")) {
 				final String lastName = line.substring(0,line.indexOf(","));
 				
 				line=line.substring(line.indexOf(",")+2); //skips ", "
 				final String firstName = line.substring(0,line.indexOf(" "));
-				actors.add(new ActorNode(firstName+" "+lastName));
-				
+				name = firstName + " " + lastName;
 			}
-			
+			else {
+				name = line.substring(0,line.indexOf(" "));
+			}
+			actors.add(new ActorNode(name));
 			
 			
 		}
