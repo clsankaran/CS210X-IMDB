@@ -20,8 +20,12 @@ public class ActorNode implements Node {
 		return _moviesActedIn;
 	}
 	
-	public void addToNeighbors(MovieNode movie) {
+	public void addNeighbor(MovieNode movie) {
 		_moviesActedIn.add(movie);
+	}
+	
+	public boolean equals(Object o) {
+		return (((ActorNode) o).getName().equals(_name));
 	}
 
 	

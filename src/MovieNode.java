@@ -19,8 +19,12 @@ public class MovieNode implements Node {
         return _actorsInMovie;
     }
 
-    public void addToNeighnors (ActorNode actor) {
+    public void addNeighnor (ActorNode actor) {
         _actorsInMovie.add(actor);
     }
+    
+    public boolean equals(Object o) {
+		return (((MovieNode) o).getName().equals(_name));
+	}
 
 }

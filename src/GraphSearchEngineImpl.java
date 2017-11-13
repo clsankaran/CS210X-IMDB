@@ -33,7 +33,7 @@ return visitedNodes;}
             Node n = nodesToVisit.poll();
             visitedNodes.add(n);
 
-            for(Node neigh: n.getNeighbors()){
+            for(Node neigh : n.getNeighbors()){
                 if((!n.getNeighbors().contains(neigh)) || !visitedNodes.contains(neigh)){
                     nodesToVisit.add(neigh);
 
