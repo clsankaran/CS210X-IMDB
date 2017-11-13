@@ -30,7 +30,7 @@ return visitedNodes;}
         nodesToVisit.add(s);
 
         while(nodesToVisit.size() > 0) {
-            Node n = nodesToVisit.remove();
+            Node n = nodesToVisit.poll();
             visitedNodes.add(n);
 
             for(Node neigh: n.getNeighbors()){
