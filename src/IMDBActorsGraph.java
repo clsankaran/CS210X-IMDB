@@ -1,15 +1,44 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.io.*;
 import java.util.Scanner;
 
 public class IMDBActorsGraph implements Graph {
+	
+	final ArrayList<ActorNode> actors;
+	
 	IMDBActorsGraph(String actorFile, String actressFile) throws IOException {
-		File fileActor = new File(actorFile);
-		File fileActress = new File(actressFile);
-		Scanner scanner = new Scanner(fileActor);
-		while(scanner.hasNextLine()){
-			String line = scanner.nextLine();
+		final File fileActor = new File(actorFile);
+		final File fileActress = new File(actressFile);
+		actors = new ArrayList<ActorNode>();
+		Scanner scanner = new Scanner(fileActor, "ISO-8859-1");
+
+		String line;
+		do {
+			line = scanner.nextLine();
+		} while (!(line.contains("Name            Titles")));
+		
+		//line is currently "Name			Titles" 
+		line = scanner.nextLine();
+		line = scanner.nextLine();
+		//line is currently the first actor
+		
+		if (!(line.startsWith("            "))) {
+			if (line.contains(",")) {
+				final String lastName = line.substring(0,line.indexOf(","));
+				
+				line=line.substring(line.indexOf(",")+2); //skips ", "
+				final String firstName = line.substring(0,line.indexOf(" "));
+				actors.add(new ActorNode(firstName+" "+lastName));
+				
+			}
+			
+			
+			
 		}
+		
+		
+
 	}
 
 	/**
