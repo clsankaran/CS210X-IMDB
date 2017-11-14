@@ -71,7 +71,7 @@ return visitedNodes;}
                     toVisit.add(neighbor);
                     visited.add(neighbor);
                     pathStack.add(neighbor);
-                    if(u == t)
+                    if(u.equals(t))
                         break;
                 }
             }
@@ -88,7 +88,7 @@ return visitedNodes;}
             {
                 shortestPathList.add(node);
                 currentSrc = node;
-                if(node == s)
+                if(node.equals(s))
                     break;
             }
         }

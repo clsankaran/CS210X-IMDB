@@ -18,9 +18,19 @@ public class GraphPartialTester {
 	 */
 	public void findShortestPath() {
 		final Node actor1 = actorsGraph.getNodeByName("Brad Pitt");
+//		for (Node n : actor1.getNeighbors()) {
+//			System.out.println(n.getName());
+//		}
 		final Node actor2 = actorsGraph.getNodeByName("Jonah Hill");
+//		for (Node n : actor2.getNeighbors()) {
+//			System.out.println(n.getName());
+//		}
 		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		for (Node n : shortestPath) {
+			System.out.println(n.getName());
+		}
 		assertNull(shortestPath); // there is no path between these people
+		
 	}
 
 	@Before
@@ -56,7 +66,19 @@ public class GraphPartialTester {
 	 */
 	public void testSpecificActor() {
 		testFindNode(actorsGraph, "Tom Brady");
+		testFindNode(actorsGraph, "Peyton Manning");
+		testFindNode(actorsGraph, "Brad Pitt");
+		testFindNode(actorsGraph, "Jonah Hill");
 	}
+	
+	@Test
+	/**
+	 * Verifies that a specific actor has been parsed.
+	 */
+	public void testActorGraphNotReturnMovies() {
+		testNotFindNode(actorsGraph, "Moneyball (2011)");
+	}
+	
 
 	@Test
 	/**
@@ -83,5 +105,16 @@ public class GraphPartialTester {
 			}
 		}
 		assertTrue(found);
+	}
+	
+	private static void testNotFindNode(Graph graph, String name) {
+		final Collection<? extends Node> nodes = graph.getNodes();
+		boolean found = false;
+		for (Node node : nodes) {
+			if (node.getName().trim().equals(name)) {
+				found = true;
+			}
+		}
+		assertFalse(found);
 	}
 }
