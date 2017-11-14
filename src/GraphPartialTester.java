@@ -57,7 +57,10 @@ public class GraphPartialTester {
 	 * Verifies that a specific movie has been parsed.
 	 */
 	public void testSpecificMovie() {
-		testFindNode(moviesGraph, "Movie1 (2001)");
+		testFindNode(moviesGraph, "Moneyball (2011)");
+		testFindNode(moviesGraph, "Pancho's Pizza (2005)");
+		testNotFindNode(moviesGraph, "SXSW Flashback 2010 (2010)"); // TV
+		testNotFindNode(moviesGraph, "\"Entertainment Tonight\" (1981)"); // TV
 	}
 
 	@Test
