@@ -18,23 +18,9 @@ public class GraphPartialTester {
 	 */
 	public void findShortestPath() {
 		Node actor1 = actorsGraph.getNodeByName("Aaberg, Andrew");
-		for(Node n : actor1.getNeighbors()){
-			System.out.println(n.getName());
-			for(Node x : n.getNeighbors()){
-				System.out.println(x.getName());
-			}
-		}
 		Node actor2 = actorsGraph.getNodeByName("Aaberg, Anthony");
-		for(Node n : actor2.getNeighbors()){
-			System.out.println(n.getName());
-			for(Node x : n.getNeighbors()){
-				System.out.println(x.getName());
-			}
-		}
-
 		List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
-
-		System.out.println(shortestPath);
+		
 		assertNotNull(shortestPath); // there is a path between these people
 		assertEquals(shortestPath.get(0), actor1);
 		assertEquals(shortestPath.get(shortestPath.size() - 1), actor2);
@@ -42,6 +28,7 @@ public class GraphPartialTester {
 
 		actor2 = actorsGraph.getNodeByName("Aaberg, Andrew");
 		shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		
 		assertNotNull(shortestPath); // there is a path to the same person
 		assertEquals(shortestPath.get(0), actor1);
 		assertEquals(shortestPath.get(shortestPath.size() - 1), actor2);
@@ -49,6 +36,7 @@ public class GraphPartialTester {
 		
 		actor1 = actorsGraph.getNodeByName("Aaiyappa, Shubra");
 		shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		
 		assertNull(shortestPath);
 
 	}
