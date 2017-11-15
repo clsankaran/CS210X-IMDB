@@ -14,7 +14,7 @@ public class GraphSearchEngineImpl implements GraphSearchEngine{
         distance.put(s, 0);
         Node u;
 
-        while(!toVisit.isEmpty()){
+        while(!(toVisit.isEmpty())){
             u = toVisit.poll();
             visited.add(u);
             pathStack.add(u);
