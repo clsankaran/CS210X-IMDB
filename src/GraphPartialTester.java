@@ -19,10 +19,12 @@ public class GraphPartialTester {
 	public void findShortestPath() {
 		Node actor1 = actorsGraph.getNodeByName("Aaberg, Andrew");
 		for(Node n : actor1.getNeighbors()){
+			System.out.println(n);
 			System.out.println(n.getName());
 		}
 		Node actor2 = actorsGraph.getNodeByName("Aaberg, Anthony");
 		for(Node n : actor2.getNeighbors()){
+			System.out.println(n);
 			System.out.println(n.getName());
 		}
 		List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
