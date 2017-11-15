@@ -5,8 +5,7 @@ public class GraphSearchEngineImpl implements GraphSearchEngine{
 
         ArrayList<Node> shortestPath = new ArrayList<Node>();
         Queue<Node> toVisit = new LinkedList<Node>();
-        Stack<Node> pathStack = new Stack<Node>();
-        ArrayList<Node> visited = new ArrayList<Node>();
+        Stack<Node> visited = new Stack<Node>();
         HashMap<Node, Integer> distance = new HashMap<Node, Integer>();
         Boolean found = false;
 
@@ -17,7 +16,6 @@ public class GraphSearchEngineImpl implements GraphSearchEngine{
         while(!(toVisit.isEmpty())){
             u = toVisit.poll();
             visited.add(u);
-            pathStack.add(u);
             if(u.equals(t)){
                 found = true;
                 break;
@@ -36,8 +34,8 @@ public class GraphSearchEngineImpl implements GraphSearchEngine{
             Node n;
             Node current = t;
             shortestPath.add(t);
-            while(!pathStack.isEmpty()) {
-                n = pathStack.pop();
+            while(!visited.isEmpty()) {
+                n = visited.pop();
                 if(current.getNeighbors().contains(n) && distance.get(n)+1 == distance.get(current))
                 {
                     shortestPath.add(n);
