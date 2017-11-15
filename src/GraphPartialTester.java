@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * Code to test Project 3; you should definitely add more tests!
  */
-public class GraphPartialTester {
+public class GraphPartialTester { 
 	Graph actorsGraph, moviesGraph;
 	GraphSearchEngine searchEngine;
 
