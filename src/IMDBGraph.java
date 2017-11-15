@@ -50,7 +50,7 @@ public abstract class IMDBGraph implements Graph {
 						if (!(_movies.contains(new MovieNode(movie)))) { // if it doesn't contain a movie with that
 																			// name
 							_movies.add(new MovieNode(movie));
-							_actors.get(_actors.size() - 1).addNeighbor(new MovieNode(movie));
+							_actors.get(_actors.size() - 1).addNeighbor(_movies.get(_movies.size() - 1));
 							// add the movie as a neighbor to actor
 							_movies.get(_movies.size() - 1).addNeighbor(_actors.get(_actors.size() - 1));
 							// add the actor as a neighbor to the movie
