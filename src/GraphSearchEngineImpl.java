@@ -1,101 +1,55 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.ArrayList;
+import java.util.*;
 
 public class GraphSearchEngineImpl implements GraphSearchEngine{
+    public List<Node> findShortestPath (Node s, Node t) {
 
+        ArrayList<Node> shortestPath = new ArrayList<Node>();
+        Queue<Node> toVisit = new LinkedList<Node>();
+        Stack<Node> pathStack = new Stack<Node>();
+        ArrayList<Node> visited = new ArrayList<Node>();
+        HashMap<Node, Integer> distance = new HashMap<Node, Integer>();
+        Boolean found = false;
 
-/*
+        toVisit.add(s);
+        distance.put(s, 0);
+        Node u;
 
-List bfs (Node s) {
-List visitedNodes;
-Queue nodesToVisit;
-
-nodesToVisit.enqueue(s);
-while (nodesToVisit.size() > 0) {
-n = nodesToVisit.dequeue();
-visitedNodes.add(n);
-for each neighbor n' of n:
-if (nodesToVisit doesn’t already contain n'
-&& we have not yet visited n'):
-nodesToVisit.enqueue(n');
-}
-return visitedNodes;}
-
- */
-
-
-    public List<Node> findShortestPath (Node s, Node t){
-        /*List<Node> visitedNodes = new LinkedList<Node>();
-        Queue<Node> nodesToVisit = new LinkedList<Node>();
-
-        nodesToVisit.add(s);
-
-        while(nodesToVisit.size() > 0) {
-            Node n = nodesToVisit.poll();
-            visitedNodes.add(n);
-
-            for(Node neigh : n.getNeighbors()){
-                if((!n.getNeighbors().contains(neigh)) || !visitedNodes.contains(neigh)){
-                    nodesToVisit.add(neigh);
-
+        while(!toVisit.isEmpty()){
+            u = toVisit.poll();
+            visited.add(u);
+            pathStack.add(u);
+            if(u.equals(t)){
+                found = true;
+                break;
+            }
+            for(Node neighbor : u.getNeighbors()){
+                if(!toVisit.contains(neighbor) && !visited.contains(neighbor)){
+                    toVisit.add(neighbor);
+                    distance.put(neighbor, distance.get(u) + 1);
                 }
             }
         }
-        return visitedNodes;*/
 
-        ArrayList<Node> shortestPathList = new ArrayList<Node>();
-        ArrayList<Node> visited = new ArrayList<Node>();
-
-        // THIS SHOULD BE DELETED. SHOULDN'T NEED A SPECIAL CASE.
-        // SUPPOSED TO RETURN A LIST OF THE NODE, NOT NULL.
-        if (s.equals(t))
+        if(!found){
             return null;
-
-        Queue<Node> toVisit = new LinkedList<Node>();
-        Stack<Node> pathStack = new Stack<Node>();
-
-        toVisit.add(s);
-        pathStack.add(s);
-        visited.add(s);
-
-        Node u = null;
-        while(!toVisit.isEmpty())
-        {
-            u = toVisit.poll();
-
-            for(Node neighbor : u.getNeighbors())
-            {
-                if(!visited.contains(neighbor))
+        } else {
+            Node n;
+            Node current = t;
+            shortestPath.add(t);
+            while(!pathStack.isEmpty()) {
+                n = pathStack.pop();
+                if(current.getNeighbors().contains(n) && distance.get(n)+1 == distance.get(current))
                 {
-                    toVisit.add(neighbor);
-                    visited.add(neighbor);
-                    pathStack.add(neighbor);
-                    if(u.equals(t))
+                    shortestPath.add(n);
+                    current = n;
+                    if(n.equals(s))
                         break;
                 }
             }
+            Collections.reverse(shortestPath);
+            return shortestPath;
         }
 
-        //To find the path
-        Node node = null;
-        Node currentSrc = t;
-        shortestPathList.add(t);
-        while(!pathStack.isEmpty())
-        {
-            node = pathStack.pop();
-            if(currentSrc.getNeighbors().contains(node))
-            {
-                shortestPathList.add(node);
-                currentSrc = node;
-                if(node.equals(s))
-                    break;
-            }
-        }
-
-        return shortestPathList;
-     }
+    }
 
 }
