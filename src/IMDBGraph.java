@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public abstract class IMDBGraph implements Graph {
 
-	final public List<ActorNode> _actors;
-	final public List<MovieNode> _movies;
+	final protected List<ActorNode> _actors;
+	final protected List<MovieNode> _movies;
 
 	protected IMDBGraph(String actorFile, String actressFile) throws IOException {
 		final File fileActor = new File(actorFile);
@@ -52,11 +52,11 @@ public abstract class IMDBGraph implements Graph {
 							_movies.add(new MovieNode(movie));
 							_actors.get(_actors.size() - 1).addNeighbor(new MovieNode(movie));
 							// add the movie as a neighbor to actor
-							_movies.get(_movies.size() - 1).addNeighnor(_actors.get(_actors.size() - 1));
+							_movies.get(_movies.size() - 1).addNeighbor(_actors.get(_actors.size() - 1));
 							// add the actor as a neighbor to the movie
 						} else {
 							_movies.get(_movies.indexOf(new MovieNode(movie)))
-									.addNeighnor(_actors.get(_actors.size() - 1));
+									.addNeighbor(_actors.get(_actors.size() - 1));
 							// find the movie node with that name and add the most recently added actor as a
 							// neighbor
 							_actors.get(_actors.size() - 1)

@@ -19,7 +19,7 @@ public class MovieNode implements Node {
         return _actorsInMovie;
     }
 
-    public void addNeighnor (ActorNode actor) {
+    public void addNeighbor (ActorNode actor) {
         _actorsInMovie.add(actor);
     }
     
