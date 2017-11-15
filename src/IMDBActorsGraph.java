@@ -13,7 +13,6 @@ public class IMDBActorsGraph extends IMDBGraph {
 	}
 	
 	
-
 	/**
 	 * Gets all the nodes in the graph.
 	 * 
