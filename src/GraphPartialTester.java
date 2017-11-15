@@ -17,19 +17,25 @@ public class GraphPartialTester {
 	 * actress.
 	 */
 	public void findShortestPath() {
-		final Node actor1 = actorsGraph.getNodeByName("Brad Pitt");
-		// for (Node n : actor1.getNeighbors()) {
-		// System.out.println(n.getName());
-		// }
-		final Node actor2 = actorsGraph.getNodeByName("Jonah Hill");
-		// for (Node n : actor2.getNeighbors()) {
-		// System.out.println(n.getName());
-		// }
-		final List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
-		for (Node n : shortestPath) {
-			System.out.println(n.getName());
-		}
-		assertNull(shortestPath); // there is no path between these people
+		Node actor1 = actorsGraph.getNodeByName("Aaberg, Andrew");
+		Node actor2 = actorsGraph.getNodeByName("Aaberg, Anthony");
+		List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		
+		assertNotNull(shortestPath); // there is a path between these people
+		assertEquals(shortestPath.get(0), actor1);
+		assertEquals(shortestPath.get(shortestPath.size() - 1), actor2);
+		assertEquals(shortestPath.size(), 3);
+
+		actor2 = actorsGraph.getNodeByName("Aaberg, Andrew");
+		shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		assertNotNull(shortestPath); // there is a path to the same person
+		assertEquals(shortestPath.get(0), actor1);
+		assertEquals(shortestPath.get(shortestPath.size() - 1), actor2);
+		assertEquals(shortestPath.size(), 1);
+		
+		actor1 = actorsGraph.getNodeByName("Aaiyappa, Shubra	Luv");
+		shortestPath = searchEngine.findShortestPath(actor1, actor2);
+		assertNull(shortestPath);
 
 	}
 
@@ -81,29 +87,25 @@ public class GraphPartialTester {
 		testNotFindNode(actorsGraph, "$haniqua"); // only TV
 
 	}
-	
 
 	@Test
 	/**
 	 * Verifies that movies have links to the correct actors/actresses
 	 */
-	public void testMovieNeighbors() { 
-		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().contains(new ActorNode("Aaberg, Andrew"))); // actor
-		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().contains(new ActorNode("Aaberg, Anthony"))); // actor
-		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().contains(new ActorNode("Aaberg, Justin"))); // actor
-		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().contains(new ActorNode("Aaberg, Shawn"))); // actor
-		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().contains(new ActorNode("Aaberg, Tammy"))); // actress
-		assertEquals(moviesGraph.getNodeByName("Same Difference (2015)")
-				.getNeighbors().size(),5);
+	public void testMovieNeighbors() {
+		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors()
+				.contains(new ActorNode("Aaberg, Andrew"))); // actor
+		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors()
+				.contains(new ActorNode("Aaberg, Anthony"))); // actor
+		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors()
+				.contains(new ActorNode("Aaberg, Justin"))); // actor
+		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors()
+				.contains(new ActorNode("Aaberg, Shawn"))); // actor
+		assertTrue(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors()
+				.contains(new ActorNode("Aaberg, Tammy"))); // actress
+		assertEquals(moviesGraph.getNodeByName("Same Difference (2015)").getNeighbors().size(), 5);
 	}
-	
 
-			
 	@Test
 	/**
 	 * Verifies that actors and actresses have links to the correct movies
@@ -137,7 +139,7 @@ public class GraphPartialTester {
 				.getNeighbors().contains(new MovieNode("Nuts! (2016/II)")));
 		assertEquals(actorsGraph.getNodeByName("Aagaard, Patti") // actress
 				.getNeighbors().size(), 2);
-		
+
 	}
 
 	@Test
@@ -147,7 +149,7 @@ public class GraphPartialTester {
 	public void testActorGraphNotReturnMovies() {
 		testNotFindNode(actorsGraph, "Same Difference (2015)");
 	}
-	
+
 	@Test
 	/**
 	 * Verifies that movieGraph doesn't return actors.
@@ -156,8 +158,6 @@ public class GraphPartialTester {
 		testNotFindNode(moviesGraph, "Aadhi (I)"); // actor
 		testNotFindNode(moviesGraph, "$haniqua"); // actresses
 	}
-
-	
 
 	/**
 	 * Verifies that the specific graph contains a node with the specified name.

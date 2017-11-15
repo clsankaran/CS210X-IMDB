@@ -49,6 +49,8 @@ return visitedNodes;}
         ArrayList<Node> shortestPathList = new ArrayList<Node>();
         ArrayList<Node> visited = new ArrayList<Node>();
 
+        // THIS SHOULD BE DELETED. SHOULDN'T NEED A SPECIAL CASE.
+        // SUPPOSED TO RETURN A LIST OF THE NODE, NOT NULL.
         if (s.equals(t))
             return null;
 
