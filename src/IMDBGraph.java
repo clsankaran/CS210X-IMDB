@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  */
 public abstract class IMDBGraph implements Graph {
-	
+
 	final List<ActorNode> _actors;
 	final List<MovieNode> _movies;
 
@@ -22,37 +22,28 @@ public abstract class IMDBGraph implements Graph {
 		_movies = new ArrayList<MovieNode>();
 		Scanner scanner = new Scanner(fileActor, "ISO-8859-1");
 		parse(scanner);
-//		scanner = new Scanner(fileActress, "ISO-8859-1");
-//		parse(scanner);
+		scanner = new Scanner(fileActress, "ISO-8859-1");
+		parse(scanner);
 	}
-	
+
 	private void parse(Scanner scanner) {
-		String line;
-		do {
+		String line = scanner.nextLine();
+		while (!((line.contains("Name")) && line.contains("Titles"))) {
 			line = scanner.nextLine();
-		} while (!(line.contains("Name            Titles")));
+		}
 		// line is currently "Name Titles"
 		line = scanner.nextLine();
 		line = scanner.nextLine();
 		// line is currently the first actor
 		while (!(line.startsWith("---"))) { // while it is not the end
 			if (!(line.equals(""))) { // if it is not just a blank
-				if (!(line.startsWith("            "))) {
-					final String name;
-					if (line.contains(",")) {
-						final String lastName = line.substring(0, line.indexOf(","));
-						line = line.substring(line.indexOf(",") + 2); // skips ", "
-						final String firstName = line.substring(0, line.indexOf(" "));
-						line = line.substring(line.indexOf(" "));
-						name = firstName + " " + lastName;
-					} else {
-						name = line.substring(0, line.indexOf(" "));
-					}
-					_actors.add(new ActorNode(name));
+				if (!(line.startsWith("\t"))) { // if it starts with a tab, then there is no actor
+					_actors.add(new ActorNode(line.substring(0, line.indexOf("\t")))); // thats his/her name
+					line = line.substring(line.indexOf("\t")); // chop off name to parse movie
 				}
 				if (!(line.contains("(TV)"))) {
-					while (line.substring(0, 1).equals(" ")) {
-						line = line.substring(1); // take off first character until you get to the title of movie
+					while (line.substring(0, 1).equals("\t")) {
+						line = line.substring(1); // take off tabs until you get to the title of movie
 					}
 					if (!(line.startsWith("\""))) {
 						final String movie = line.substring(0, line.indexOf(")") + 1);
@@ -76,6 +67,13 @@ public abstract class IMDBGraph implements Graph {
 				}
 			}
 			line = scanner.nextLine();
+		}
+		// remove all actors with no movies
+		for (int i = 0; i < _actors.size(); i++) {
+			if (_actors.get(i).getNeighbors().isEmpty()) {
+				_actors.remove(i);
+				i--;
+			}
 		}
 	}
 
