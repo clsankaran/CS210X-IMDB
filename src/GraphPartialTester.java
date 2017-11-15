@@ -36,7 +36,7 @@ public class GraphPartialTester {
 		
 		actor1 = actorsGraph.getNodeByName("Aaiyappa, Shubra");
 		shortestPath = searchEngine.findShortestPath(actor1, actor2);
-		 
+		
 		assertNull(shortestPath);
 
 	}
