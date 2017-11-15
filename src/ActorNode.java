@@ -19,14 +19,13 @@ public class ActorNode implements Node {
 	public Collection<? extends Node> getNeighbors() {
 		return _moviesActedIn;
 	}
-	
+
 	public void addNeighbor(MovieNode movie) {
 		_moviesActedIn.add(movie);
 	}
-	
+
 	public boolean equals(Object o) {
 		return (((Node) o).getName().equals(_name));
 	}
 
-	
 }

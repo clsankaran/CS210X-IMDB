@@ -4,15 +4,15 @@ import java.util.List;
 import java.io.*;
 import java.util.Scanner;
 
-// FIX ALL SPACES WITH CORRECT TABS
+/**
+ * Graph that returns movies as nodes
+ *
+ */
 public class IMDBMoviesGraph extends IMDBGraph {
 
-
 	IMDBMoviesGraph(String actorFile, String actressFile) throws IOException {
-		super(actorFile,actressFile);
+		super(actorFile, actressFile);
 	}
-	
-	
 
 	/**
 	 * Gets all the nodes in the graph.
@@ -37,7 +37,7 @@ public class IMDBMoviesGraph extends IMDBGraph {
 				return n;
 			}
 		}
-		
+
 		return null; // if it can't find anything
 	}
 }
