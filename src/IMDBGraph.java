@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public abstract class IMDBGraph implements Graph {
 
-	final List<ActorNode> _actors;
-	final List<MovieNode> _movies;
+	final public List<ActorNode> _actors;
+	final public List<MovieNode> _movies;
 
 	protected IMDBGraph(String actorFile, String actressFile) throws IOException {
 		final File fileActor = new File(actorFile);

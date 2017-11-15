@@ -27,6 +27,7 @@ public class GraphPartialTester {
 			System.out.println(n);
 			System.out.println(n.getName());
 		}
+		
 		List<Node> shortestPath = searchEngine.findShortestPath(actor1, actor2);
 
 		System.out.println(shortestPath);
