@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * Code to test Project 3; you should definitely add more tests!
  */
-public class GraphPartialTester { 
+public class GraphPartialTester {
 	Graph actorsGraph, moviesGraph;
 	GraphSearchEngine searchEngine;
 
@@ -17,7 +17,7 @@ public class GraphPartialTester {
 	 * actress.
 	 */
 	public void findShortestPath() {
-		Node actor1 = actorsGraph.getNodeByName("Aaberg, Justin");
+		Node actor1 = actorsGraph.getNodeByName("Aaberg, Andrew");
 		for(Node n : actor1.getNeighbors()){
 			System.out.println(n.getName());
 			for(Node x : n.getNeighbors()){
@@ -40,7 +40,7 @@ public class GraphPartialTester {
 		assertEquals(shortestPath.get(shortestPath.size() - 1), actor2);
 		assertEquals(shortestPath.size(), 3);
 
-		actor2 = actorsGraph.getNodeByName("Aaberg, Justin");
+		actor2 = actorsGraph.getNodeByName("Aaberg, Andrew");
 		shortestPath = searchEngine.findShortestPath(actor1, actor2);
 		assertNotNull(shortestPath); // there is a path to the same person
 		assertEquals(shortestPath.get(0), actor1);
